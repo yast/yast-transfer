@@ -27,11 +27,9 @@ Requires:	curl
 @plugindir@/libpy2ag_tftp.so.*
 @plugindir@/libpy2ag_tftp.so
 @plugindir@/libpy2ag_tftp.la
-@moduledir@/FTP.ycp
-@moduledir@/HTTP.ycp
-@moduledir@/TFTP.ycp
-%dir @yncludedir@/transfer
-@yncludedir@/transfer/url.ycp
+@moduledir@/*
+#%dir @yncludedir@/transfer
+#@yncludedir@/transfer/url.ycp
 
 
 %doc @docdir@
