@@ -35,6 +35,7 @@ global define HTTP()
  */
 global define map Get(string url, string output)
 ``{
+	y2milestone("URL: %1", url);
 	map Response = SCR::Execute(.curl.get, url, $["output":output]);
 	return Response;
 }
@@ -48,6 +49,7 @@ global define map Get(string url, string output)
  */
 global define map Post(string url, string output, string postData)
 ``{
+	y2milestone("URL: %1", url);
 	map Response = SCR::Execute(.curl.get, url, $["output":output, "data":postData]);
 	return Response;
 }

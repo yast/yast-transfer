@@ -94,11 +94,9 @@ YCPValue CurlAgent::Get( const char *kHTTPURL_Str, const char *HTTPTarget)
     
     curlOutputFileTrait Output(HTTPTarget);
     Request.mOutputStorage.SetTrait(&Output, false);
-
     if (userPassword != "") {
-	Request.mUserPassword.SetUserAndPassword((char *)userPassword.c_str());
+		Request.mUserPassword.SetUserAndPassword((char *)userPassword.c_str());
     }
-   
 
     Request.SetVerbose(false);
     Request.SetURL(kHTTPURL_Str);

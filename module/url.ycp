@@ -1,0 +1,43 @@
+/**
+ *
+ *
+ *
+ *
+ */
+{
+	global define map parse_url(string uri)
+	``{
+
+		map tokens = $[];
+    	list rawtokens = regexptokenize (uri, "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?");
+
+    	y2milestone("tokens: %1", tokens);
+    	y2milestone("userpass: %1", userpass);
+		
+		/* no processing necessary on the scheme */
+		tokens["scheme"] = rawtokens[1]:"";
+		
+		/* the path to the resource */
+		tokens["path"] = rawtokens[4]:"";
+
+		/* the query part */
+		tokens["query"] = rawtokens[6]:"";
+
+		/* the fragment */
+		tokens["fragment"] = rawtokens[8]:"";
+
+		/* extract the username, pass, and port from the hostname */
+		/* extract username:pass@host:port from regex results */
+    	list userpass = regexptokenize (rawtokens[3]:"", "^(([^@:]+)(:([^@:]+))?@)?((\\[([^]]+)\\])|([^:@]+))(:([^:@]+))?");
+		tokens["user"] = userpass[1]:"";
+		tokens["pass"] = userpass[3]:"";
+		if (userpass[7]:"" == "")
+			tokens["host"] =	userpass[6]:"";
+		else
+			tokens["host"] = userpass[7]:"";
+		tokens["port"] = userpass[9]:"";
+		
+		return tokens;
+	}
+
+}

@@ -79,7 +79,7 @@ public:
     virtual YCPValue SendXMLRPCRequest(  const char *kHTTPPostURL_Str, const char *HTTPTarget, const char *kHTTPPost_Str);
     virtual string getMapValue ( const YCPMap map, const string key, const string defaultValue);
 
-    // virtual void CurlAgent::setUser( const string userPassword );
+    
 
 private:
 
