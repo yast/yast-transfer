@@ -15,6 +15,8 @@
 
 #include <Y2.h>
 #include <scr/SCRAgent.h>
+#include <scr/SCRInterpreter.h>
+
 
 /**
  * @short An interface class between YaST2 and Curl Agent
@@ -43,8 +45,7 @@ public:
      * @param arg Additional parameter.
      */
     virtual YCPValue Read(const YCPPath &path,
-			  const YCPValue& arg = YCPNull(),
-			  const YCPValue& opt = YCPNull());
+			  const YCPValue& arg = YCPNull());
 
     /**
      * Provides SCR Write ().
