@@ -20,5 +20,5 @@
 .curl
 
 `ag_curl(
-    CurlAgent()
+    `CurlAgent()
 )

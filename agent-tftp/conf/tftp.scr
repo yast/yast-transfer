@@ -13,5 +13,5 @@
 .tftp
 
 `ag_tftp(
-    TftpAgent()
+    `TftpAgent()
 )
