@@ -42,15 +42,6 @@ global define list Dir(string url) ``{
     return filter(string s, toset(splitstring(dir["output"]:"", "\r\n")), ``(s!="." && s!=".." && s!=""));
 }
 
-/**
- * Set user and password for FTP authentication
- */
-global define map setUserPassword() ``{
-    string userpass = sformat("%1:%2", user, password);
-    return SCR::Execute(.curl.setUserPassword, userpass, $[]);
-}
-// FIXME: rename to SetUserPassword()
-// check return value
 
 /* EOF */
 }

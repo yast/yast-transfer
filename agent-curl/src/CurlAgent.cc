@@ -32,9 +32,6 @@ CurlAgent::~CurlAgent()
 
 
 
-
-
-
 YCPValue CurlAgent::Get( const char *url, const char *target)
 {
 
@@ -112,40 +109,6 @@ YCPValue CurlAgent::Get( const char *url, const char *target)
 	return Response;
 
 
-/*
-	curlEasyHTTP    Request;
-	CURLcode        Result;
-	curlInfo	    info;
-
-	// Response Map
-	YCPMap	   Response;
-
-	curlOutputFileTrait Output(target);
-	Request.mOutputStorage.SetTrait(&Output, false);
-
-	Request.SetVerbose(false);
-	Request.SetURL(url);
-	Result = Request.Perform();
-	Request.GetInfo(info);
-
-	if (Result != CURLE_OK)
-	{
-		y2error("Error: %s", Request.GetErrorStr());
-		Response->add(YCPString("code"), YCPInteger ( info.mHTTPCode));
-		return Response;
-	}
-	else
-	{
-		Response->add(YCPString("code"), YCPInteger ( (long int) info.mHTTPCode));
-		Response->add(YCPString("totaltime"), YCPFloat ( info.mTotalTime));
-		Response->add(YCPString("dsize"), YCPFloat ( info.mSizeDownload));
-		return Response;
-	}
-
-	return Response;
-
-
-*/
 }
 
 /*
