@@ -1,0 +1,66 @@
+/**
+ * File:    modules/FTP.ycp
+ * Package: Transfer Protocols
+ * Summary: Handle FTP Requests
+ * Authors: Anas Nashif <nashif@suse.de>
+ *
+ * $Id$
+ *
+ */
+
+{
+
+module "FTP";
+
+global string user = "";
+
+global string password = "";
+
+/**
+ * Constructor
+ *
+ */
+
+global define FTP()
+``{
+	return;
+}
+
+
+/**
+ * List FTP directory
+ *
+ */
+global define Dir(string url)
+``{
+	list ls = [];
+	map ret = SCR::Execute(.curl.ftp.dir, url, $[]);
+	if (size(ret) > 0)
+	{
+		y2milestone("returned string: %1", ret);
+		ls =filter(`s, toset(splitstring(ret["output"]:"", "\r\n")), ``(s!="." && s!=".." && s!=""));
+
+		return ls;
+	}
+	else
+	{
+		y2error("Error while trying to list directory");
+		return  ls;
+	}
+}
+
+
+/**
+ * Set user and password for HTTP authentication
+ *
+ */
+global define map setUserPassword()
+``{
+	string userpass = sformat("%1:%2", user , password );
+	boolean ret = SCR::Execute(.curl.setUserPassword, userpass, $[]);
+	return ret;
+}
+
+
+
+}

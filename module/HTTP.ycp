@@ -1,0 +1,66 @@
+/**
+ * File:    modules/HTTP.ycp
+ * Package: Transfer Protocols
+ * Summary: Handle HTTP Requests
+ * Authors: Anas Nashif <nashif@suse.de>
+ *
+ * $Id$
+ *
+ */
+
+{
+
+module "HTTP";
+
+
+global string user = "";
+
+global string password = "";
+
+/**
+ * Constructor
+ *
+ */
+
+global define HTTP()
+``{
+	return;
+}
+
+/**
+ * Send a get request
+ * @param url url in any standard form
+ * @param output file to save result to
+ * @return map Reponse map with HTTP code and transfer size and time
+ */
+global define map Get(string url, string output)
+``{
+	map Response = SCR::Execute(.curl.get, url, $["output":output]);
+	return Response;
+}
+
+/**
+ * Send a post request
+ * @param url url in any standard form
+ * @param output file to save result to
+ * @param postdata the rest of the url and whatever comes after the ? in the URL
+ * @return map Reponse map with HTTP code and transfer size and time
+ */
+global define map Post(string url, string output, string postData)
+``{
+	map Response = SCR::Execute(.curl.get, url, $["output":output, "data":postData]);
+	return Response;
+}
+
+/**
+ * Set user and password for HTTP authentication
+ *
+ */
+global define map setUserPassword()
+``{
+	string userpass = sformat("%1:%2", user , password );
+	boolean ret = SCR::Execute(.curl.setUserPassword, userpass, $[]);
+	return ret;
+}
+
+}

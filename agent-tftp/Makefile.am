@@ -2,7 +2,7 @@
 # Makefile.am for y2a_tftp/src
 #
 
-AM_CXXFLAGS = -Wall -DY2LOG=\"agent-curl\" # -g # -pedantic # -W
+AM_CXXFLAGS = -Wall -DY2LOG=\"agent-tftp\" # -g # -pedantic # -W
 
 plugin_LTLIBRARIES = libpy2ag_tftp.la
 noinst_LTLIBRARIES = liby2ag_tftp.la

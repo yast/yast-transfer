@@ -424,24 +424,32 @@ YCPValue TftpAgent::Read(const YCPPath &path, const YCPValue& arg )
  */
 
 YCPValue TftpAgent::Execute (const YCPPath& path, const YCPValue& value , 
-			    const YCPValue& arg )
+		const YCPValue& arg )
 {
-    YCPMap argmap = arg->asMap(); 
-    
-    string serverstr = getValue ( argmap,"serverstr" ); 
-    if (serverstr =="") 
-    {
-	y2error("Missing hostname of TFTP server, aborting");
-	return YCPBoolean(false);
-    }
-    string localfile = getValue ( argmap,"localfile" ); 
+	int ret;
+	string path_name = path->component_str (0);
 
-    if (dotftp((char *)serverstr.c_str(), (char *)localfile.c_str(), 
-		    (char *)value->asString()->value().c_str()) == 0)
-	return YCPBoolean(true);
-    else
-	return YCPBoolean(false);
-    return YCPVoid();
+	if (  path_name == "get" || path_name == "put")
+	{
+		if ( !value.isNull()
+				&& value->isString()
+				&& !arg.isNull()
+				&& arg->isString())
+		{
+			ret = dotftp((char *)value->asString()->value().c_str(), 
+					(char *)arg->asString()->value().c_str(), 
+					"get");
+			if (ret == 0)
+				return YCPBoolean(true);
+			else
+				return YCPBoolean(false);
+		}
+	} else {
+    	y2error("Wrong path '%s' in Execute().", path->toString().c_str());
+    	return YCPVoid();
+
+	}
+	return YCPVoid();
 }
 
 /**
