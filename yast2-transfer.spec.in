@@ -30,6 +30,5 @@ Requires:	curl
 @moduledir@/FTP.ycp
 @moduledir@/HTTP.ycp
 @moduledir@/TFTP.ycp
-@yncludedir@/transfer/url.ycp
 
 %doc @docdir@
