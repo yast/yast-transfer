@@ -3,8 +3,8 @@
 
 @HEADER@
 Summary:	-
-Provides:	yast2-agent-curl yast2-agent-tftp
-Obsoletes:	yast2-agent-curl yast2-agent-tftp
+Provides:	yast2-agent-curl yast2-agent-tftp yast2-agent-curl-devel yast2-agent-tftp-devel
+Obsoletes:	yast2-agent-curl yast2-agent-tftp yast2-agent-curl-devel yast2-agent-tftp-devel
 Requires:	curl 
 
 %description
