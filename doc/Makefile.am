@@ -2,7 +2,6 @@
 # Makefile.am for devtools/devtools/skeletons/agent/doc
 #
 
-SUBDIRS = autodocs
 
 htmldir = $(docdir)
 
