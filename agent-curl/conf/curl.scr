@@ -1,0 +1,24 @@
+/**
+ * File:	curl.scr
+ * Summary:	Curl agent
+ * Author:	Anas Nashif <nashif@suse.de>
+ * Access:	execute-only
+ * See:		curl(1), libcurl(3)
+ *
+ * Example:
+ *   Dir(.curl)
+ *   (["WHAT", "EVER", "YOU", "GET"])
+ **
+ *   Read(.curl)
+ *   ("WHAT_EVER_YOU_GET")
+ **
+ *   Write(.curl, value)
+ *   (true)
+ *
+ * $Id$
+ */
+.curl
+
+`ag_curl(
+    CurlAgent()
+)
