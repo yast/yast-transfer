@@ -28,6 +28,19 @@ global define FTP()
 
 
 /**
+ * Send a get request
+ * @param url url in any standard form
+ * @param output file to save result to
+ * @return map Reponse map with HTTP code and transfer size and time
+ */
+global define map Get(string url, string output)
+``{
+	y2milestone("URL: %1", url);
+	map Response = SCR::Execute(.curl.get, url, $["output":output]);
+	return Response;
+}
+
+/**
  * List FTP directory
  *
  */
