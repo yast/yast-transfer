@@ -60,10 +60,9 @@ YCPValue CurlAgent::Get( const char *url, const char *target)
 		if ( res != 0 ) {
 			fclose( outfile );
 			y2error("Cant open file %s", target);
+			y2milestone("Cant open file %s", target);
 			return YCPVoid();
 		}
-
-
 
 		res = curl_easy_perform(curl);
 		if(CURLE_OK != res) {
@@ -74,11 +73,16 @@ YCPValue CurlAgent::Get( const char *url, const char *target)
 
 
 		res =curl_easy_getinfo(curl,CURLINFO_CONTENT_TYPE,&content);
+
 		if(CURLE_OK != res) {
 			y2error("curl told us %d\n", res);
 			return YCPVoid();
 		}
+
+		if (content) {
 		Response->add(YCPString("content-type"), YCPString(content));
+		}
+
 		res =curl_easy_getinfo(curl,CURLINFO_HTTP_CODE,&code);
 		if(CURLE_OK != res) {
 			y2error("curl told us %d\n", res);
@@ -90,8 +94,10 @@ YCPValue CurlAgent::Get( const char *url, const char *target)
 			y2error("curl told us %d\n", res);
 			return YCPVoid();
 		}
+
 		Response->add(YCPString("totaltime"), YCPFloat(totaltime));
 		res =curl_easy_getinfo(curl,CURLINFO_SIZE_DOWNLOAD,&dsize);
+
 		if(CURLE_OK != res) {
 			y2error("curl told us %d\n", res);
 			return YCPVoid();
