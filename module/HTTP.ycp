@@ -22,7 +22,7 @@ global string password = "";
  */
 global define map Get(string url, string output) ``{
     y2debug("URL: %1", url);
-    map response = SCR::Execute(.curl.get, url, $["output":output]);
+    map response = (map) SCR::Execute(.curl.get, url, $["output":output]);
     return response;
 }
 
@@ -36,7 +36,7 @@ global define map Get(string url, string output) ``{
 
 global define map Post(string url, string output, string postData) ``{
     y2debug("URL: %1", url);
-    map response = SCR::Execute(.curl.get, url, $["output":output, "data":postData]);
+    map response = (map) SCR::Execute(.curl.get, url, $["output":output, "data":postData]);
     return response;
 }
 
@@ -48,7 +48,7 @@ global define map Post(string url, string output, string postData) ``{
 
 global define map setUserPassword() ``{
     string userpass = sformat("%1:%2", user , password );
-    return SCR::Execute(.curl.setUserPassword, userpass, $[]);
+    return (map) SCR::Execute(.curl.setUserPassword, userpass, $[]);
 }
 
 /* EOF */

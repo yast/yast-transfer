@@ -22,7 +22,7 @@ global string password = "";
  */
 global define map Get(string url, string output) ``{
     y2debug("URL: %1", url);
-    map response = SCR::Execute(.curl.get, url, $["output":output]);
+    map response = (map) SCR::Execute(.curl.get, url, $["output":output]);
     return response;
 }
 
@@ -31,10 +31,10 @@ global define map Get(string url, string output) ``{
  */
 global define list Dir(string url) ``{
 
-    map dir = SCR::Execute(.curl.ftp.dir, url, $[]);
+    map dir = (map) SCR::Execute(.curl.ftp.dir, url, $[]);
     y2debug("returned string: %1", dir);
 
-    if(size(ret) <= 0) {
+    if(size(dir) <= 0) {
 	y2error("Error while trying to list directory");
 	return [];
     }
