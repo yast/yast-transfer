@@ -13,10 +13,7 @@ liby2ag_curl_la_LDFLAGS = -version-info 2:0
 
 libpy2ag_curl_la_SOURCES =                           \
         $(liby2ag_curl_la_SOURCES)                   \
-		Y2CCCurlAgent.cc	\
-		Y2CCCurlAgent.h		\
-		Y2CurlAgentComponent.cc	\
-		Y2CurlAgentComponent.h	
+		Y2CCCurlAgent.cc	
 libpy2ag_curl_la_LDFLAGS = -version-info 2:0
 libpy2ag_curl_la_LIBADD =  $(CURL_LIBS)
 

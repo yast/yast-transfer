@@ -10,6 +10,17 @@
  * $Id$
  */
 
+#include <scr/Y2AgentComponent.h>
+#include <scr/Y2CCAgentComponent.h>
+
+#include "TftpAgent.h"
+
+
+typedef Y2AgentComp <TftpAgent> Y2TftpAgentComp;
+
+Y2CCAgentComp <Y2TftpAgentComp> g_y2ccag_tftp ("ag_tftp");
+/*
+
 #include "Y2CCTftpAgent.h"
 #include "Y2TftpAgentComponent.h"
 
@@ -35,4 +46,4 @@ Y2CCTftpAgent::create(const char *name) const
 }
 
 
-Y2CCTftpAgent g_y2ccag_tftp;
+Y2CCTftpAgent g_y2ccag_tftp;*/

@@ -10,6 +10,18 @@
  * $Id$
  */
 
+#include <scr/Y2AgentComponent.h>
+#include <scr/Y2CCAgentComponent.h>
+
+#include "CurlAgent.h"
+
+
+typedef Y2AgentComp <CurlAgent> Y2CurlAgentComp;
+
+Y2CCAgentComp <Y2CurlAgentComp> g_y2ccag_curl ("ag_curl");
+
+/*
+
 #include "Y2CCCurlAgent.h"
 #include "Y2CurlAgentComponent.h"
 
@@ -35,4 +47,4 @@ Y2CCCurlAgent::create(const char *name) const
 }
 
 
-Y2CCCurlAgent g_y2ccag_curl;
+Y2CCCurlAgent g_y2ccag_curl;*/

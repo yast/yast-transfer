@@ -7,3 +7,4 @@ Makefile.in
 .deps
 ag_curl
 *.kdoc
+*.loT

@@ -412,7 +412,7 @@ YCPValue TftpAgent::Dir(const YCPPath& path)
 /**
  * Read
  */
-YCPValue TftpAgent::Read(const YCPPath &path, const YCPValue& arg )
+YCPValue TftpAgent::Read(const YCPPath &path, const YCPValue& arg, const YCPValue& opt )
 {
     y2error("Wrong path '%s' in Read().", path->toString().c_str());
     return YCPVoid();
@@ -466,7 +466,7 @@ YCPValue TftpAgent::Write(const YCPPath &path, const YCPValue& value, const YCPV
  */
 YCPValue TftpAgent::otherCommand(const YCPTerm& term)
 {
-    string sym = term->symbol()->symbol();
+    string sym = term->name ();
 
     if (sym == "TftpAgent") {
         /* Your initialization */
