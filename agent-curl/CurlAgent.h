@@ -13,9 +13,6 @@
 #ifndef _CurlAgent_h
 #define _CurlAgent_h
 
-#undef y2log_component
-#define y2log_component "ag_curl"
-
 #include <Y2.h>
 #include <scr/SCRAgent.h>
 #include <scr/SCRInterpreter.h>

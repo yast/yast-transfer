@@ -13,8 +13,6 @@
 #ifndef _TftpAgent_h
 #define _TftpAgent_h
 
-#undef y2log_component
-#define y2log_component "ag_tftp"
 #include <Y2.h>
 #include <scr/SCRAgent.h>
 #include <scr/SCRInterpreter.h>
