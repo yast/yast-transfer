@@ -429,7 +429,7 @@ YCPValue TftpAgent::Execute (const YCPPath& path, const YCPValue& value ,
 	int ret;
 	string path_name = path->component_str (0);
 
-	if (  path_name == "get" || path_name == "put")
+	if (  path_name == "get" )
 	{
 		if ( !value.isNull()
 				&& value->isString()
@@ -439,6 +439,22 @@ YCPValue TftpAgent::Execute (const YCPPath& path, const YCPValue& value ,
 			ret = dotftp((char *)value->asString()->value().c_str(), 
 					(char *)arg->asString()->value().c_str(), 
 					"get");
+			if (ret == 0)
+				return YCPBoolean(true);
+			else
+				return YCPBoolean(false);
+		}
+        }
+        else if (  path_name == "put")
+	{
+		if ( !value.isNull()
+				&& value->isString()
+				&& !arg.isNull()
+				&& arg->isString())
+		{
+			ret = dotftp((char *)value->asString()->value().c_str(), 
+					(char *)arg->asString()->value().c_str(), 
+					"put");
 			if (ret == 0)
 				return YCPBoolean(true);
 			else

@@ -24,5 +24,17 @@ global define boolean Get(string server, string remote , string local) ``{
     return (boolean) SCR::Execute(.tftp.get, serverstr, local);
 }
 
+/**
+ * Send a put request
+ * @param server server address
+ * @param remote  remote file
+ * @param local file to save result to
+ * @return boolean true on success
+ */
+global define boolean Put(string server, string remote , string local) ``{
+    string serverstr = sformat("%1:%2", server, remote);
+    return (boolean) SCR::Execute(.tftp.put, serverstr, local);
+}
+
 /* EOF */
 }
