@@ -2,8 +2,8 @@
  * File:	curl.scr
  * Summary:	Curl agent
  * Author:	Anas Nashif <nashif@suse.de>
- * Access:	read / write / execute OR read-only OR execute-only
- * See:		anyagent libscr	MANPAGE(1) file/relative/to/doc_home/file.html
+ * Access:	execute-only
+ * See:		curl(1), libcurl(3)
  *
  * Example:
  *   Dir(.curl)
@@ -16,11 +16,9 @@
  *   (true)
  *
  * $Id$
- *
- * SOME USEFUL INFORMATION ON THE AGENT
  */
 .curl
 
 `ag_curl(
-  CurlAgent()
+    CurlAgent()
 )

@@ -5,7 +5,6 @@
  * Authors: Anas Nashif <nashif@suse.de>
  *
  * $Id$
- *
  */
 
 {
@@ -13,19 +12,7 @@
 module "FTP";
 
 global string user = "";
-
 global string password = "";
-
-/**
- * Constructor
- *
- */
-
-global define FTP()
-``{
-	return;
-}
-
 
 /**
  * Send a get request
@@ -33,47 +20,37 @@ global define FTP()
  * @param output file to save result to
  * @return map Reponse map with HTTP code and transfer size and time
  */
-global define map Get(string url, string output)
-``{
-	y2milestone("URL: %1", url);
-	map Response = SCR::Execute(.curl.get, url, $["output":output]);
-	return Response;
+global define map Get(string url, string output) ``{
+    y2debug("URL: %1", url);
+    map response = SCR::Execute(.curl.get, url, $["output":output]);
+    return response;
 }
 
 /**
  * List FTP directory
- *
  */
-global define Dir(string url)
-``{
-	list ls = [];
-	map ret = SCR::Execute(.curl.ftp.dir, url, $[]);
-	if (size(ret) > 0)
-	{
-		y2milestone("returned string: %1", ret);
-		ls =filter(`s, toset(splitstring(ret["output"]:"", "\r\n")), ``(s!="." && s!=".." && s!=""));
+global define list Dir(string url) ``{
 
-		return ls;
-	}
-	else
-	{
-		y2error("Error while trying to list directory");
-		return  ls;
-	}
+    map dir = SCR::Execute(.curl.ftp.dir, url, $[]);
+    y2debug("returned string: %1", dir);
+
+    if(size(ret) <= 0) {
+	y2error("Error while trying to list directory");
+	return [];
+    }
+
+    return filter(string s, toset(splitstring(dir["output"]:"", "\r\n")), ``(s!="." && s!=".." && s!=""));
 }
-
 
 /**
- * Set user and password for HTTP authentication
- *
+ * Set user and password for FTP authentication
  */
-global define map setUserPassword()
-``{
-	string userpass = sformat("%1:%2", user , password );
-	boolean ret = SCR::Execute(.curl.setUserPassword, userpass, $[]);
-	return ret;
+global define map setUserPassword() ``{
+    string userpass = sformat("%1:%2", user, password);
+    return SCR::Execute(.curl.setUserPassword, userpass, $[]);
 }
+// FIXME: rename to SetUserPassword()
+// check return value
 
-
-
+/* EOF */
 }

@@ -5,27 +5,14 @@
  * Authors: Anas Nashif <nashif@suse.de>
  *
  * $Id$
- *
  */
 
 {
 
 module "HTTP";
 
-
 global string user = "";
-
 global string password = "";
-
-/**
- * Constructor
- *
- */
-
-global define HTTP()
-``{
-	return;
-}
 
 /**
  * Send a get request
@@ -33,11 +20,10 @@ global define HTTP()
  * @param output file to save result to
  * @return map Reponse map with HTTP code and transfer size and time
  */
-global define map Get(string url, string output)
-``{
-	y2milestone("URL: %1", url);
-	map Response = SCR::Execute(.curl.get, url, $["output":output]);
-	return Response;
+global define map Get(string url, string output) ``{
+    y2debug("URL: %1", url);
+    map response = SCR::Execute(.curl.get, url, $["output":output]);
+    return response;
 }
 
 /**
@@ -47,22 +33,19 @@ global define map Get(string url, string output)
  * @param postdata the rest of the url and whatever comes after the ? in the URL
  * @return map Reponse map with HTTP code and transfer size and time
  */
-global define map Post(string url, string output, string postData)
-``{
-	y2milestone("URL: %1", url);
-	map Response = SCR::Execute(.curl.get, url, $["output":output, "data":postData]);
-	return Response;
+global define map Post(string url, string output, string postData) ``{
+    y2debug("URL: %1", url);
+    map response = SCR::Execute(.curl.get, url, $["output":output, "data":postData]);
+    return response;
 }
 
 /**
  * Set user and password for HTTP authentication
- *
  */
-global define map setUserPassword()
-``{
-	string userpass = sformat("%1:%2", user , password );
-	boolean ret = SCR::Execute(.curl.setUserPassword, userpass, $[]);
-	return ret;
+global define map setUserPassword() ``{
+    string userpass = sformat("%1:%2", user , password );
+    return SCR::Execute(.curl.setUserPassword, userpass, $[]);
 }
 
+/* EOF */
 }
