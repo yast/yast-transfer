@@ -403,16 +403,16 @@ TftpAgent::~TftpAgent()
 /**
  * Dir
  */
-YCPValue TftpAgent::Dir(const YCPPath& path)
+YCPList TftpAgent::Dir(const YCPPath& path)
 {
     y2error("Wrong path '%s' in Dir().", path->toString().c_str());
-    return YCPVoid();
+    return YCPNull();
 }
 
 /**
  * Read
  */
-YCPValue TftpAgent::Read(const YCPPath &path, const YCPValue& arg)
+YCPValue TftpAgent::Read(const YCPPath &path, const YCPValue& arg, const YCPValue& opt)
 {
     y2error("Wrong path '%s' in Read().", path->toString().c_str());
     return YCPVoid();
@@ -455,10 +455,10 @@ YCPValue TftpAgent::Execute (const YCPPath& path, const YCPValue& value ,
 /**
  * Write
  */
-YCPValue TftpAgent::Write(const YCPPath &path, const YCPValue& value, const YCPValue& arg)
+YCPBoolean TftpAgent::Write(const YCPPath &path, const YCPValue& value, const YCPValue& arg)
 {
     y2error("Wrong path '%s' in Write().", path->toString().c_str());
-    return YCPVoid();
+    return YCPBoolean(false);
 }
 
 
@@ -467,7 +467,7 @@ YCPValue TftpAgent::Write(const YCPPath &path, const YCPValue& value, const YCPV
  */
 YCPValue TftpAgent::otherCommand(const YCPTerm& term)
 {
-    string sym = term->symbol()->symbol();
+    string sym = term->name();
 
     if (sym == "TftpAgent") {
         /* Your initialization */

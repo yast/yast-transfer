@@ -15,7 +15,6 @@
 
 #include <Y2.h>
 #include <scr/SCRAgent.h>
-#include <scr/SCRInterpreter.h>
 
 
 /**
@@ -43,7 +42,7 @@ class TftpAgent : public SCRAgent
          * @param path Path that should be read.
          * @param arg Additional parameter.
          */
-        virtual YCPValue Read(const YCPPath &path, const YCPValue& arg = YCPNull());
+        virtual YCPValue Read(const YCPPath &path, const YCPValue& arg = YCPNull(), const YCPValue& opt = YCPNull ());
 
         /**
          * Provides SCR Execute ().
@@ -53,12 +52,12 @@ class TftpAgent : public SCRAgent
         /**
          * Provides SCR Write ().
          */
-        virtual YCPValue Write(const YCPPath &path, const YCPValue& value, const YCPValue& arg );
+        virtual YCPBoolean Write(const YCPPath &path, const YCPValue& value, const YCPValue& arg );
 
         /**
          * Provides SCR Write ().
          */
-        virtual YCPValue Dir(const YCPPath& path);
+        virtual YCPList Dir(const YCPPath& path);
 
         /**
          * Used for mounting the agent.

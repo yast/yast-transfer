@@ -244,16 +244,16 @@ YCPValue CurlAgent::Execute (const YCPPath& path,
 /**
  * Dir
  */
-YCPValue CurlAgent::Dir(const YCPPath& path)
+YCPList CurlAgent::Dir(const YCPPath& path)
 {
 	y2error("Wrong path '%s' in Read().", path->toString().c_str());
-	return YCPVoid();
+	return YCPNull();
 }
 
 /**
  * Read
  */
-YCPValue CurlAgent::Read(const YCPPath &path, const YCPValue& arg)
+YCPValue CurlAgent::Read(const YCPPath &path, const YCPValue& arg, const YCPValue& opt)
 {
 	y2error("Wrong path '%s' in Read().", path->toString().c_str());
 	return YCPVoid();
@@ -262,11 +262,11 @@ YCPValue CurlAgent::Read(const YCPPath &path, const YCPValue& arg)
 /**
  * Write
  */
-YCPValue CurlAgent::Write(const YCPPath &path, const YCPValue& value,
+YCPBoolean CurlAgent::Write(const YCPPath &path, const YCPValue& value,
 		const YCPValue& arg)
 {
 	y2error("Wrong path '%s' in Write().", path->toString().c_str());
-	return YCPVoid();
+	return YCPBoolean(false);
 }
 
 /**
@@ -274,7 +274,7 @@ YCPValue CurlAgent::Write(const YCPPath &path, const YCPValue& value,
  */
 YCPValue CurlAgent::otherCommand(const YCPTerm& term)
 {
-    string sym = term->symbol()->symbol();
+    string sym = term->name ();
 
 	if (sym == "CurlAgent") {
         /* Your initialization */
