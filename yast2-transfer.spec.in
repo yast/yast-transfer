@@ -1,5 +1,5 @@
 @HEADER-COMMENT@
-# neededforbuild gpp libgpp libxcrypt libxcrypt-devel tcl yast2-devel-packages curl curl-devel
+# neededforbuild gpp libgpp libxcrypt libxcrypt-devel tcl yast2-devel-packages curl curl-devel openssl-devel openssl
 
 @HEADER@
 Summary:	-
