@@ -70,27 +70,12 @@ public:
      * Used for mounting the agent.
      */
     virtual YCPValue otherCommand(const YCPTerm& term);
-    virtual YCPValue Ftpdir( const char *url, const char *target);
     virtual YCPValue Get( const char *url, const char *target);
     virtual YCPValue  Post(  const char *url, const char *post, const char *target);
-    virtual YCPValue xmlrpc(  const char *url, const char *post);
     virtual string getMapValue ( const YCPMap map, const string key, const string defaultValue);
 
 
 private:
-
-  /**
-   * user
-   */
-    string user;
-    string password;
-    string userPassword;
-  /**
-   * proxy user
-   */
-    string proxyUser;
-    string proxyPassword;
-
 
 };
 
