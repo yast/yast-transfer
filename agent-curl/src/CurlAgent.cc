@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "curlcpp.h"
+#include "curl/curl.h"
 
 /**
  * Constructor
@@ -33,8 +33,86 @@ CurlAgent::~CurlAgent()
 
 
 
+
+
 YCPValue CurlAgent::Get( const char *url, const char *target)
 {
+
+	FILE *outfile;
+	CURL *curl;
+	CURLcode res;
+	YCPMap	   Response;
+	char	*content;
+	double	dsize, totaltime;
+	int		code;
+
+
+	outfile = fopen(target, "w");
+	if (!outfile)
+	{
+		y2error("Cant open file %s", target);
+		return YCPVoid();
+	}
+
+	curl_global_init(CURL_GLOBAL_DEFAULT);
+
+	curl = curl_easy_init();
+	if(curl) {
+		curl_easy_setopt(curl, CURLOPT_URL, url);
+		res = curl_easy_setopt(curl, CURLOPT_WRITEDATA, outfile);
+		if ( res != 0 ) {
+			fclose( outfile );
+			y2error("Cant open file %s", target);
+			return YCPVoid();
+		}
+
+
+
+		res = curl_easy_perform(curl);
+		if(CURLE_OK != res) {
+			/* we failed */
+			y2error("curl told us %d\n", res);
+			return YCPVoid();
+		}
+
+
+		res =curl_easy_getinfo(curl,CURLINFO_CONTENT_TYPE,&content);
+		if(CURLE_OK != res) {
+			y2error("curl told us %d\n", res);
+			return YCPVoid();
+		}
+		Response->add(YCPString("content-type"), YCPString(content));
+		res =curl_easy_getinfo(curl,CURLINFO_HTTP_CODE,&code);
+		if(CURLE_OK != res) {
+			y2error("curl told us %d\n", res);
+			return YCPVoid();
+		}
+		Response->add(YCPString("code"), YCPInteger(code));
+		res =curl_easy_getinfo(curl,CURLINFO_TOTAL_TIME,&totaltime);
+		if(CURLE_OK != res) {
+			y2error("curl told us %d\n", res);
+			return YCPVoid();
+		}
+		Response->add(YCPString("totaltime"), YCPFloat(totaltime));
+		res =curl_easy_getinfo(curl,CURLINFO_SIZE_DOWNLOAD,&dsize);
+		if(CURLE_OK != res) {
+			y2error("curl told us %d\n", res);
+			return YCPVoid();
+		}
+		Response->add(YCPString("dsize"), YCPFloat(dsize));
+
+		/* always cleanup */
+		curl_easy_cleanup(curl);
+
+
+	}
+	fclose( outfile );
+
+
+	return Response;
+
+
+/*
 	curlEasyHTTP    Request;
 	CURLcode        Result;
 	curlInfo	    info;
@@ -65,9 +143,12 @@ YCPValue CurlAgent::Get( const char *url, const char *target)
 	}
 
 	return Response;
+
+
+*/
 }
 
-
+/*
 YCPValue  CurlAgent::Post(  const char *url, const char *post, const char *target)
 {
 	curlEasyHTTP    Request;
@@ -104,7 +185,7 @@ YCPValue  CurlAgent::Post(  const char *url, const char *post, const char *targe
 
 }
 
-
+*/
 
 /*
  * Get single values from map
@@ -169,6 +250,7 @@ YCPValue CurlAgent::Execute (const YCPPath& path,
 					(const char *) Output.c_str() );
 		}
 	}
+/*
 	else if (path_name == "post")
 	{
 		if ( !value.isNull()
@@ -183,6 +265,7 @@ YCPValue CurlAgent::Execute (const YCPPath& path,
 		}
 
 	}
+*/
 	else
 	{
 		y2error("Unknown path");

@@ -8,12 +8,7 @@ noinst_LTLIBRARIES = liby2ag_curl.la
 
 liby2ag_curl_la_SOURCES =                   \
 	CurlAgent.cc		\
-	CurlAgent.h			\
-	curlcpp.cc          \
-	curlcpp.h           \
-	curloptcpp.cc       \
-	curlstoragecpp.cc   \
-	curlutilscpp.cc		
+	CurlAgent.h			
 liby2ag_curl_la_LDFLAGS = -version-info 2:0
 
 libpy2ag_curl_la_SOURCES =                           \
