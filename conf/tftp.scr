@@ -1,0 +1,33 @@
+/**
+ * File:
+ *   tftp.scr
+ *
+ * Summary:
+ *   YaST2 SCR: Tftp agent implementation
+ *
+ * Access:
+ *   read/write/execute OR read-only OR execute-only
+ *   
+ * Authors:
+ *   Anas Nashif <nashif@suse.de>
+ *
+ * See:
+ *   anyagent
+ *   libscr
+ *   man MANPAGE
+ *   info INFOPAGE
+ *   some/other/file/relative/to/doc_home/file.html
+ *
+ * Example:
+ *   Read(.tftp)
+ *   (["WHAT", "EVER", "YOU", "GET"])
+ * 
+ * $Id$
+ *
+ * SOME USEFUL INFORMATION ON THE AGENT
+ */
+.tftp
+
+`ag_tftp(
+  TftpAgent()
+)
