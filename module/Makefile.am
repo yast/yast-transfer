@@ -4,12 +4,9 @@
 
 yncludedir = @yncludedir@/transfer
 
-module_DATA =			\
+module_DATA =		\
 	HTTP.ycp	\
 	FTP.ycp		\
 	TFTP.ycp
 
-ynclude_DATA = url.ycp
-
-
-EXTRA_DIST = $(module_DATA)  $(ynclude_DATA)
+EXTRA_DIST = $(module_DATA)
