@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 28 13:29:25 CEST 2005 - locilka@suse.cz
+
+- Changing package maintainer to locilka@suse.cz
+- 2.12.0
+
+-------------------------------------------------------------------
 Wed May  5 23:51:38 CEST 2004 - nashif@suse.de
 
 - Fixed bug #39996: fixed tftp 'put'
