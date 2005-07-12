@@ -1,0 +1,35 @@
+@HEADER-COMMENT@
+# neededforbuild gpp libgpp libxcrypt libxcrypt-devel tcl yast2-devel-packages curl curl-devel openssl-devel openssl
+
+@HEADER@
+Summary:	-
+Provides:	yast2-agent-curl yast2-agent-tftp yast2-agent-curl-devel yast2-agent-tftp-devel
+Obsoletes:	yast2-agent-curl yast2-agent-tftp yast2-agent-curl-devel yast2-agent-tftp-devel
+Requires:	curl 
+
+%description
+-
+
+@PREP@
+
+@BUILD@
+
+@INSTALL@
+
+@CLEAN@
+
+%files
+%defattr(-,root,root)
+@scrconfdir@/*.scr
+@plugindir@/libpy2ag_curl.so.*
+@plugindir@/libpy2ag_curl.so
+@plugindir@/libpy2ag_curl.la
+@plugindir@/libpy2ag_tftp.so.*
+@plugindir@/libpy2ag_tftp.so
+@plugindir@/libpy2ag_tftp.la
+@moduledir@/*
+#%dir @yncludedir@/transfer
+#@yncludedir@/transfer/url.ycp
+
+
+%doc @docdir@

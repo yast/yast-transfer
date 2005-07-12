@@ -1,0 +1,47 @@
+/**
+ * File:    modules/FTP.ycp
+ * Package: Transfer Protocols
+ * Summary: Handle FTP Requests
+ * Authors: Anas Nashif <nashif@suse.de>
+ *
+ * $Id$
+ */
+
+{
+
+module "FTP";
+
+global string user = "";
+global string password = "";
+
+/**
+ * Send a get request
+ * @param url url in any standard form
+ * @param output file to save result to
+ * @return map Reponse map with HTTP code and transfer size and time
+ */
+global define map Get(string url, string output) ``{
+    y2debug("URL: %1", url);
+    map response = (map) SCR::Execute(.curl.get, url, $["output":output]);
+    return response;
+}
+
+/**
+ * List FTP directory
+ */
+global define list Dir(string url) ``{
+
+    map dir = (map) SCR::Execute(.curl.ftp.dir, url, $[]);
+    y2debug("returned string: %1", dir);
+
+    if(size(dir) <= 0) {
+	y2error("Error while trying to list directory");
+	return [];
+    }
+
+    return filter(string s, toset(splitstring(dir["output"]:"", "\r\n")), ``(s!="." && s!=".." && s!=""));
+}
+
+
+/* EOF */
+}
