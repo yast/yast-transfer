@@ -104,6 +104,7 @@ YCPValue CurlAgent::Get( const char *url, const char *target)
 		}
 		Response->add(YCPString("dsize"), YCPFloat(dsize));
 
+		y2milestone("curl returned -> response code: %d, total size: %g, total time %f, content type: %s\n", code, dsize, totaltime, content);
 		/* always cleanup */
 		curl_easy_cleanup(curl);
 

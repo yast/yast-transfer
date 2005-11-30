@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 30 12:31:13 CET 2005 - locilka@suse.cz
+
+- Added debugging message into the Curl::Get function
+- 2.13.0
+
+-------------------------------------------------------------------
 Thu Apr 28 13:29:25 CEST 2005 - locilka@suse.cz
 
 - Changing package maintainer to locilka@suse.cz
