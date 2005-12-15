@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 15 14:01:05 CET 2005 - locilka@suse.cz
+
+- Fixed bug #135829
+  Curl library was called with wrong data-type. The bug appeared on
+  big-endian 64bits only (Such as s390x).
+- 2.13.1
+
+-------------------------------------------------------------------
 Wed Nov 30 12:31:13 CET 2005 - locilka@suse.cz
 
 - Added debugging message into the Curl::Get function
