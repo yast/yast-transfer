@@ -51,5 +51,11 @@ global define map setUserPassword() ``{
     return (map) SCR::Execute(.curl.setUserPassword, userpass, $[]);
 }
 
+global define void easySSL( boolean easy ) ``{
+    y2debug("setting easySSL to %1",easy);
+    SCR::Execute(.curl.easySSL, easy, $[]);
+    return;
+}
+
 /* EOF */
 }

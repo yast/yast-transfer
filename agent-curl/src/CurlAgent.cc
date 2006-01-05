@@ -21,6 +21,7 @@
  */
 CurlAgent::CurlAgent() : SCRAgent()
 {
+    easySSL_val = false;
 }
 
 /**
@@ -30,7 +31,11 @@ CurlAgent::~CurlAgent()
 {
 }
 
-
+void CurlAgent::easySSL( bool easy )
+{
+    easySSL_val = easy;
+    return;
+}
 
 YCPValue CurlAgent::Get( const char *url, const char *target)
 {
@@ -56,6 +61,8 @@ YCPValue CurlAgent::Get( const char *url, const char *target)
 	curl = curl_easy_init();
 	if(curl) {
 		curl_easy_setopt(curl, CURLOPT_URL, url);
+        if( easySSL_val )
+            curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
 		res = curl_easy_setopt(curl, CURLOPT_WRITEDATA, outfile);
 		if ( res != 0 ) {
 			fclose( outfile );
@@ -220,6 +227,13 @@ YCPValue CurlAgent::Execute (const YCPPath& path,
 					(const char *) Output.c_str() );
 		}
 	}
+
+    else if (path_name == "easySSL")
+    {
+        if ( !value.isNull() ) {
+            easySSL( (bool)(value->asBoolean()->value()) );
+        }
+    }
 /*
 	else if (path_name == "post")
 	{

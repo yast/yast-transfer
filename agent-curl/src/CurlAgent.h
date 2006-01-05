@@ -26,6 +26,7 @@ private:
     /**
      * Agent private variables
      */
+    bool    easySSL_val;
 
 public:
     /**
@@ -74,7 +75,7 @@ public:
     virtual YCPValue Get( const char *url, const char *target);
     // virtual YCPValue  Post(  const char *url, const char *post, const char *target);
     virtual string getMapValue ( const YCPMap map, const string key, const string defaultValue);
-
+    virtual void easySSL( bool easy );
 
 private:
 
