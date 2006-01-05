@@ -1,0 +1,17 @@
+/**
+ * File:	tftp.scr
+ * Summary:	TFTP agent
+ * Author:	Anas Nashif <nashif@suse.de>
+ * Access:	execute-only
+ *
+ * Example:
+ *   Read(.tftp)
+ *   (["WHAT", "EVER", "YOU", "GET"])
+ *
+ * $Id$
+ */
+.tftp
+
+`ag_tftp(
+    `TftpAgent()
+)

@@ -1,0 +1,24 @@
+## SCR agent configure.in.in
+
+## initialize
+@YAST2-INIT-COMMON@
+@YAST2-INIT-YCP@
+@YAST2-INIT-PROGRAM@
+
+## some common checks
+@YAST2-CHECKS-COMMON@
+@YAST2-CHECKS-YCP@
+@YAST2-CHECKS-PROGRAM@
+## libcurl
+
+AC_CHECK_PROG(curl_config,curl-config,yes)
+if test "$curl_config" = "yes" ; then
+    CURL_CFLAGS="`curl-config --cflags`"
+    CURL_LIBS="`curl-config --libs`"
+    AC_SUBST(CURL_LIBS)
+    AC_SUBST(CURL_CFLAGS)
+fi
+
+
+## and generate the output
+@YAST2-OUTPUT@
