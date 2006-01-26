@@ -1,7 +1,7 @@
 @HEADER-COMMENT@
-# neededforbuild gpp libgpp libxcrypt libxcrypt-devel tcl yast2-devel-packages curl curl-devel openssl-devel openssl
 
 @HEADER@
+BuildRequires:	curl-devel gcc-c++ libxcrypt-devel yast2-devel-packages
 Summary:	-
 Provides:	yast2-agent-curl yast2-agent-tftp yast2-agent-curl-devel yast2-agent-tftp-devel
 Obsoletes:	yast2-agent-curl yast2-agent-tftp yast2-agent-curl-devel yast2-agent-tftp-devel
