@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  6 19:38:10 CET 2006 - locilka@suse.cz
+
+- Ajusted BuildRequires for package
+- 2.13.3
+
+-------------------------------------------------------------------
 Thu Jan  5 10:36:25 CET 2006 - locilka@suse.cz
 
 - Adding enhancement wanted and created by ug@suse.de

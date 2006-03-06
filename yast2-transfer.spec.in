@@ -1,7 +1,7 @@
 @HEADER-COMMENT@
 
 @HEADER@
-BuildRequires:	curl-devel gcc-c++ libxcrypt-devel yast2-devel-packages
+BuildRequires:	curl-devel gcc-c++ libxcrypt-devel perl-XML-Writer update-desktop-files yast2 yast2-devtools yast2-testsuite doxygen
 Summary:	-
 Provides:	yast2-agent-curl yast2-agent-tftp yast2-agent-curl-devel yast2-agent-tftp-devel
 Obsoletes:	yast2-agent-curl yast2-agent-tftp yast2-agent-curl-devel yast2-agent-tftp-devel
