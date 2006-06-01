@@ -3,7 +3,7 @@
  * Package: Transfer Protocols
  * Summary: Handle TFTP Requests
  * Authors: Anas Nashif <nashif@suse.de>
- * Stable
+ * Flags:   Stable
  *
  * $Id$
  *
