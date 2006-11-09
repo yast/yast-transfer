@@ -4,6 +4,11 @@ Thu Nov  9 17:04:09 CET 2006 - ug@suse.de
 - version 2.14.0
 
 -------------------------------------------------------------------
+Thu Sep 14 00:49:15 CEST 2006 - ro@suse.de
+
+- added yast2-core-devel to BuildRequires·
+
+-------------------------------------------------------------------
 Thu Jun  1 12:52:30 CEST 2006 - locilka@suse.cz
 
 - Marking FTP, TFTP and HTTP modules as Stable.
