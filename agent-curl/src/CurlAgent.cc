@@ -61,6 +61,7 @@ YCPValue CurlAgent::Get( const char *url, const char *target)
 	curl = curl_easy_init();
 	if(curl) {
 		curl_easy_setopt(curl, CURLOPT_URL, url);
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
         if( easySSL_val )
             curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
 		res = curl_easy_setopt(curl, CURLOPT_WRITEDATA, outfile);
