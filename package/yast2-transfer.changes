@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 25 15:29:01 CEST 2009 - ug@suse.de
+
+- send ACK package for the last DATA package that was received
+  via TFTP
+- 2.18.0
+
+-------------------------------------------------------------------
 Fri Jan  4 09:46:04 CET 2008 - ug@suse.de
 
 - follow HTTP code 301 and 302 (#344123)

@@ -158,7 +158,8 @@ static inline int tftp(const int cmd, const struct hostent *host,
 
 		    cp += len;
 		} else if (finished) {
-		    break;
+// dont break here, we need the ACK for the last package
+//		    break;
 		}
 	    }
 		/* send packet */
@@ -175,6 +176,9 @@ static inline int tftp(const int cmd, const struct hostent *host,
 		    len = -1;
 		    break;
 		}
+		if( cmd_get && (opcode == 4) && finished )
+		    // ACK sent
+		    break;
 		/* receive packet */
 		memset(&from, 0, sizeof(from));
 		fromlen = sizeof(from);
@@ -229,7 +233,7 @@ static inline int tftp(const int cmd, const struct hostent *host,
 		    }
 	    } while (timeout && (len >= 0));
 
-	    if (len < 0) {
+	    if (len < 0 || finished ) {
 		break;
 	    }
 
