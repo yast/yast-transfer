@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 26 16:04:14 CEST 2009 - ug@suse.de
+
+- send ACK package for the last DATA package that was received 
+  via TFTP (bnc#507086)
+- 2.13.5
+
+-------------------------------------------------------------------
 Thu Jan 11 15:07:11 CET 2007 - ug@suse.de
 
 - 2.13.4
