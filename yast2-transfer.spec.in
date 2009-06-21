@@ -8,7 +8,7 @@ Obsoletes:	yast2-agent-curl yast2-agent-tftp yast2-agent-curl-devel yast2-agent-
 Requires:	curl 
 
 %description
--
+A YaST2 Agent for various Transfer Protocols: FTP, HTTP, and TFTP.
 
 @PREP@
 
