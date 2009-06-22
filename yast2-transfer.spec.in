@@ -1,6 +1,7 @@
 @HEADER-COMMENT@
 
 @HEADER@
+Group:	System/YaST
 License: GPL v2 or later
 BuildRequires:	curl-devel gcc-c++ libxcrypt-devel perl-XML-Writer update-desktop-files yast2 yast2-devtools yast2-testsuite doxygen yast2-core-devel
 Summary:	YaST2 - Agent for Various Transfer Protocols
