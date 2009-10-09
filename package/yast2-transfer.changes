@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  9 14:13:13 CEST 2009 - ug@suse.de
+
+- 2.18.1
+
+-------------------------------------------------------------------
 Fri Jun 19 12:31:51 CEST 2009 - mvidner@suse.cz
 
 - Using autodocs-cc.ami, which contains a fix for automake 1.11.
