@@ -2,6 +2,7 @@
 Fri Jul 29 14:16:32 CEST 2011 - ug@suse.de
 
 - add support for client certificates for HTTPS
+- 2.21.0
 
 -------------------------------------------------------------------
 Fri Oct  9 14:13:13 CEST 2009 - ug@suse.de
