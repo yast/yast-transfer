@@ -22,6 +22,8 @@
 CurlAgent::CurlAgent() : SCRAgent()
 {
     easySSL_val = false;
+    clientKeyPath_val = NULL;
+    clientCertPath_val = NULL;
 }
 
 /**
@@ -34,6 +36,30 @@ CurlAgent::~CurlAgent()
 void CurlAgent::easySSL( bool easy )
 {
     easySSL_val = easy;
+    return;
+}
+
+void CurlAgent::clientCertSSL( const char *path )
+{
+    if( clientCertPath_val != NULL )
+        free(clientCertPath_val);
+    if( path != NULL ) {
+        clientCertPath_val = new char [strlen (path) + 1];
+        if( clientCertPath_val != NULL )
+            strcpy( clientCertPath_val, path );
+    }
+    return;
+}
+
+void CurlAgent::clientKeySSL( const char *path )
+{
+    if( clientKeyPath_val != NULL )
+        free(clientKeyPath_val);
+    if( path != NULL ) {
+        clientKeyPath_val = new char [strlen (path) + 1];
+        if( clientKeyPath_val != NULL )
+            strcpy( clientKeyPath_val, path );
+    }
     return;
 }
 
@@ -64,6 +90,10 @@ YCPValue CurlAgent::Get( const char *url, const char *target)
         curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
         if( easySSL_val )
             curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+        if( clientCertPath_val != NULL )
+            curl_easy_setopt(curl, CURLOPT_SSLCERT, clientCertPath_val);
+        if( clientKeyPath_val != NULL )
+            curl_easy_setopt(curl, CURLOPT_SSLKEY, clientKeyPath_val);
 		res = curl_easy_setopt(curl, CURLOPT_WRITEDATA, outfile);
 		if ( res != 0 ) {
 			fclose( outfile );
@@ -233,6 +263,18 @@ YCPValue CurlAgent::Execute (const YCPPath& path,
     {
         if ( !value.isNull() ) {
             easySSL( (bool)(value->asBoolean()->value()) );
+        }
+    }
+    else if (path_name == "clientKeySSL")
+    {
+        if ( !value.isNull() ) {
+            clientKeySSL( (const char *)(value->asString()->value().c_str()) );
+        }
+    }
+    else if (path_name == "clientCertSSL")
+    {
+        if ( !value.isNull() ) {
+            clientCertSSL( (const char *)(value->asString()->value().c_str()) );
         }
     }
 /*

@@ -58,5 +58,18 @@ global define void easySSL( boolean easy ) ``{
     return;
 }
 
+global define void clientCertSSL( string cert_path ) ``{
+    y2debug("setting clientCertSSL to %1",cert_path);
+    SCR::Execute(.curl.clientCertSSL, cert_path, $[]);
+    return;
+}
+
+global define void clientKeySSL( string key_path ) ``{
+    y2debug("setting clientKeySSL to %1",key_path);
+    SCR::Execute(.curl.clientKeySSL, key_path, $[]);
+    return;
+}
+
+
 /* EOF */
 }
