@@ -2,6 +2,7 @@
 Mon Aug 29 12:57:30 CEST 2011 - ug@suse.de
 
 - added support for client certifactes on HTTPS transfers
+  (bnc#709255)
 - 2.16.3
 
 -------------------------------------------------------------------
