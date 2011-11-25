@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 25 12:26:08 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
 Fri Jul 29 14:16:32 CEST 2011 - ug@suse.de
 
 - add support for client certificates for HTTPS
