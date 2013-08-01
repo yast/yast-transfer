@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  1 05:56:06 UTC 2013 - lslezak@suse.cz
+
+- move the development documentation to devel-doc subpackage
+- removed yast2-testsuite Buildrequire
+- 3.0.1
+
+-------------------------------------------------------------------
 Wed Jul 31 08:43:29 UTC 2013 - yast-devel@opensuse.org
 
 - converted from YCP to Ruby by YCP Killer
