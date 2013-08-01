@@ -3,7 +3,7 @@
 @HEADER@
 Group:	System/YaST
 License: GPL-2.0
-BuildRequires:	curl-devel gcc-c++ perl-XML-Writer update-desktop-files yast2 yast2-devtools yast2-testsuite doxygen yast2-core-devel libtool
+BuildRequires:	curl-devel gcc-c++ perl-XML-Writer update-desktop-files yast2 yast2-devtools doxygen yast2-core-devel libtool
 %if 0%{?suse_version} < 1220
 BuildRequires:  libxcrypt-devel
 %endif
@@ -16,6 +16,15 @@ Requires:	curl
 
 %description
 A YaST2 Agent for various Transfer Protocols: FTP, HTTP, and TFTP.
+
+%package devel-doc
+Requires:       yast2-transfer = %version
+Group:          System/YaST
+Summary:        YaST2 - Transfer - Development Documentation
+
+%description devel-doc
+This package contains development documentation for using the API
+provided by yast2-transfer package.
 
 @PREP@
 
@@ -32,13 +41,16 @@ rm -f $RPM_BUILD_ROOT/@plugindir@/libpy2ag_tftp.la
 @scrconfdir@/*.scr
 @plugindir@/libpy2ag_curl.so.*
 @plugindir@/libpy2ag_curl.so
-#@plugindir@/libpy2ag_curl.la
 @plugindir@/libpy2ag_tftp.so.*
 @plugindir@/libpy2ag_tftp.so
-#@plugindir@/libpy2ag_tftp.la
 @moduledir@/*
-#%dir @yncludedir@/transfer
-#@yncludedir@/transfer/url.ycp
 
+%dir @docdir@
+%doc @docdir@/README
+%doc @docdir@/COPYING
 
-%doc @docdir@
+%files devel-doc
+%doc @docdir@/*.html
+%doc @docdir@/agent-curl
+%doc @docdir@/agent-tftp
+

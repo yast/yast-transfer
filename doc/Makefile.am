@@ -5,5 +5,5 @@
 
 htmldir = $(docdir)
 
-html_DATA = curl.html TODO.txt tftp.html
+html_DATA = curl.html tftp.html
 EXTRA_DIST = $(html_DATA)
