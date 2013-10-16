@@ -72,7 +72,6 @@ rm -f $RPM_BUILD_ROOT/%{yast_plugindir}/libpy2ag_tftp.la
 %{yast_moduledir}/*
 
 %dir %{yast_docdir}
-%doc %{yast_docdir}/README
 %doc %{yast_docdir}/COPYING
 
 %files devel-doc
