@@ -62,7 +62,7 @@ module Yast
 
       Builtins.filter(
         Builtins.toset(
-          Builtins.splitstring(Ops.get_string(dir, "output", ""), " \n")
+          Builtins.splitstring(Ops.get_string(dir, "output", ""), "\r\n")
         )
       ) { |s| s != "." && s != ".." && s != "" }
     end
