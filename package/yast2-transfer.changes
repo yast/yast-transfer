@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 26 13:56:18 UTC 2015 - jreidinger@suse.com
+
+- fixed \r character lost during conversion to Ruby 
+
+-------------------------------------------------------------------
 Wed Nov 13 15:56:18 UTC 2013 - jreidinger@suse.com
 
 - Add explicit COPYING file
