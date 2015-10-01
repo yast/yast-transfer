@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Jan 26 13:56:18 UTC 2015 - jreidinger@suse.com
 
-- fixed \r character lost during conversion to Ruby 
+- fixed \r character lost during conversion to Ruby (bnc#344123)
 - 3.1.2
 
 -------------------------------------------------------------------
