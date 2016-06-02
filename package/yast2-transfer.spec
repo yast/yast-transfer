@@ -17,7 +17,7 @@
 
 
 Name:           yast2-transfer
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -39,15 +39,6 @@ Requires:	curl
 
 %description
 A YaST2 Agent for various Transfer Protocols: FTP, HTTP, and TFTP.
-
-%package devel-doc
-Requires:       yast2-transfer = %version
-Group:          System/YaST
-Summary:        YaST2 - Transfer - Development Documentation
-
-%description devel-doc
-This package contains development documentation for using the API
-provided by yast2-transfer package.
 
 %prep
 %setup -n %{name}-%{version}
@@ -73,9 +64,3 @@ rm -f $RPM_BUILD_ROOT/%{yast_plugindir}/libpy2ag_tftp.la
 
 %dir %{yast_docdir}
 %doc %{yast_docdir}/COPYING
-
-%files devel-doc
-%doc %{yast_docdir}/*.html
-%doc %{yast_docdir}/agent-curl
-%doc %{yast_docdir}/agent-tftp
-
