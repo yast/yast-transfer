@@ -35,6 +35,7 @@ Requires:       yast2-ruby-bindings >= 1.0.0
 Summary:	YaST2 - Agent for Various Transfer Protocols
 Provides:	yast2-agent-curl yast2-agent-tftp yast2-agent-curl-devel yast2-agent-tftp-devel
 Obsoletes:	yast2-agent-curl yast2-agent-tftp yast2-agent-curl-devel yast2-agent-tftp-devel
+Obsoletes:      yast2-transfer-devel-doc
 Requires:	curl 
 
 %description
