@@ -9,4 +9,4 @@ script:
   # the "yast-travis-cpp" script is included in the base yastdevel/cpp image
   # see https://github.com/yast/docker-yast-cpp/blob/master/yast-travis-cpp
   - docker run -it yast-transfer-image yast-travis-cpp
-  - docker run -it yast-transfer-image bash -c "rake check:syntax && rake check:pot"
+  - docker run -it yast-transfer-image bash -c "rake check:syntax && rake check:pot && rake test:unit"
