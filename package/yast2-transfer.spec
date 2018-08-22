@@ -24,7 +24,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.bz2
 
 Group:	        System/YaST
-License:        GPL-2.0
+License:        GPL-2.0-only
 BuildRequires:	curl-devel gcc-c++ perl-XML-Writer update-desktop-files yast2 doxygen yast2-core-devel libtool
 BuildRequires:  yast2-devtools >= 3.1.10
 %if 0%{?suse_version} < 1220
@@ -64,4 +64,4 @@ rm -f $RPM_BUILD_ROOT/%{yast_plugindir}/libpy2ag_tftp.la
 %{yast_moduledir}/*
 
 %dir %{yast_docdir}
-%doc %{yast_docdir}/COPYING
+%license %{yast_docdir}/COPYING
