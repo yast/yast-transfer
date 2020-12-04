@@ -16,7 +16,7 @@ jobs:
 
     - name: Prepare System
       run: |
-        zypper --gpg-auto-import-keys --non-interactive in --no-recommends \
+        zypper --non-interactive in --no-recommends \
           libcurl-devel
 
     - name: Package Build
@@ -37,4 +37,3 @@ jobs:
 
     - name: pot
       run:  rake check:pot
-
