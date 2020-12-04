@@ -22,7 +22,7 @@ jobs:
     - name: Package Build
       run:  yast-ci-cpp
 
-  Tests:
+  Checks:
     runs-on: ubuntu-latest
     # there is also ruby code, so for testing it use ruby container
     container: registry.opensuse.org/yast/head/containers/yast-ruby:latest
@@ -37,7 +37,4 @@ jobs:
 
     - name: pot
       run:  rake check:pot
-
-    - name: tests
-      run:  rake test:unit
 
