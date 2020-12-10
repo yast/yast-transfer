@@ -15,9 +15,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Prepare System
-      run: |
-        zypper --non-interactive in --no-recommends \
-          libcurl-devel
+      run: zypper --non-interactive in --no-recommends libcurl-devel
 
     - name: Package Build
       run:  yast-ci-cpp
