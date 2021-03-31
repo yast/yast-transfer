@@ -7,7 +7,7 @@ on: [push, pull_request]
 jobs:
   Package:
     runs-on: ubuntu-latest
-    container: registry.opensuse.org/yast/head/containers/yast-cpp:latest
+    container: registry.opensuse.org/yast/sle-15/sp3/containers/yast-cpp:latest
 
     steps:
 
@@ -23,7 +23,7 @@ jobs:
   Checks:
     runs-on: ubuntu-latest
     # there is also ruby code, so for testing it use ruby container
-    container: registry.opensuse.org/yast/head/containers/yast-ruby:latest
+    container: registry.opensuse.org/yast/sle-15/sp3/containers/yast-ruby:latest
 
     steps:
 
