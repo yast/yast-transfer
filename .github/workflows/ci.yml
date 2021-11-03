@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: registry.opensuse.org/yast/head/containers/yast-cpp:latest
-      options: --privileged
 
     steps:
 
@@ -27,7 +26,6 @@ jobs:
     # there is also ruby code, so for testing it use ruby container
     container:
       image: registry.opensuse.org/yast/head/containers/yast-ruby:latest
-      options: --privileged
 
     steps:
 
