@@ -26,6 +26,7 @@ jobs:
     # there is also ruby code, so for testing it use ruby container
 
     strategy:
+      fail-fast: false
       matrix:
         distro:  [ "tumbleweed", "leap_latest" ]
 
