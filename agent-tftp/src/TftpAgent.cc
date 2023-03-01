@@ -333,7 +333,7 @@ int dotftp(char *serverstr, char *localfile, char *action)
 	
     if (strncmp(action, "get", 3) == 0) {
 	cmd = tftp_cmd_get; 
-	flags = O_WRONLY | O_CREAT;
+	flags = O_WRONLY | O_CREAT | O_TRUNC;
 	y2debug("Getting file...");
     } else if (strncmp(action, "put", 3) == 0){
 	cmd = tftp_cmd_put; 
