@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  1 07:54:03 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed TFTP download, truncate the target file to avoid garbage
+  at the end of the file when saving to an already existing file
+  (bsc#1208754)
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop packaging docdir, it only contained the license which
