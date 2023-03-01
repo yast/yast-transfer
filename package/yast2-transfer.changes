@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  1 07:54:03 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed TFTP download, truncate the target file to avoid garbage
+  at the end of the file when saving to an already existing file
+  (bsc#1208754)
+- 3.1.4
+
+-------------------------------------------------------------------
 Thu Jun  2 08:58:27 UTC 2016 - igonzalezsosa@suse.com
 
 - Drop yast2-transfer-devel-doc package (fate#320356)
