@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  1 07:54:03 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed TFTP download, truncate the target file to avoid garbage
+  at the end of the file when saving to an already existing file
+  (bsc#1208754)
+- 4.1.1
+
+-------------------------------------------------------------------
 Tue Feb 26 14:02:36 UTC 2019 - José Iván López González <jlopez@suse.com>
 
 - Version bump (bsc#1124009)
