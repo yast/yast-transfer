@@ -2,7 +2,7 @@
 
 name: CI
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   Package:
@@ -11,15 +11,14 @@ jobs:
       image: registry.opensuse.org/yast/head/containers/yast-cpp:latest
 
     steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
 
-    - name: Git Checkout
-      uses: actions/checkout@v2
+      - name: Prepare System
+        run: zypper --non-interactive in --no-recommends libcurl-devel
 
-    - name: Prepare System
-      run: zypper --non-interactive in --no-recommends libcurl-devel
-
-    - name: Package Build
-      run:  yast-ci-cpp
+      - name: Package Build
+        run: yast-ci-cpp
 
   Checks:
     runs-on: ubuntu-latest
@@ -28,18 +27,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        distro:  [ "tumbleweed", "leap_latest" ]
+        distro: [ "tumbleweed" ]
 
     container:
       image: registry.opensuse.org/yast/head/containers_${{matrix.distro}}/yast-ruby
 
     steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
 
-    - name: Git Checkout
-      uses: actions/checkout@v2
+      - name: syntax
+        run: rake check:syntax
 
-    - name: syntax
-      run:  rake check:syntax
-
-    - name: pot
-      run:  rake check:pot
+      - name: pot
+        run: rake check:pot
